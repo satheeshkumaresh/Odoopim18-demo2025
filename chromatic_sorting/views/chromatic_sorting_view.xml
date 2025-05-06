@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_chromatic_sorting_form" model="ir.ui.view">
+        <field name="name">chromatic.sorting.form</field>
+        <field name="model">chromatic.sorting</field>
+        <field name="arch" type="xml">
+            <form string="Chromatic Sorting">
+                <header>
+                    <button name="sort_colors" type="object" string="Sort Colors" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="color_ids">
+                            <list editable="bottom">
+                                <field name="color_name"/>
+                                <field name="red"/>
+                                <field name="green"/>
+                                <field name="blue"/>
+                                <field name="color" widget="color"/>
+                            </list>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="sorted_color_ids" readonly="1">
+                            <list>
+                                <field name="color_name"/>
+                                <field name="red"/>
+                                <field name="green"/>
+                                <field name="blue"/>
+                                <field name="color" widget="color"/>
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="sort_colors" type="object" string="Sort Colors" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_chromatic_sorting_tree" model="ir.ui.view">
+        <field name="name">chromatic.sorting.tree</field>
+        <field name="model">chromatic.sorting</field>
+        <field name="arch" type="xml">
+            <list string="Chromatic Sorting">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+     <record id="view_chromatic_color_tree" model="ir.ui.view">
+        <field name="name">chromatic.color.tree</field>
+        <field name="model">chromatic.color</field>
+        <field name="arch" type="xml">
+            <list string="Chromatic Colors" create="0">
+                <field name="color_name"/>
+                <field name="red"/>
+                <field name="green"/>
+                <field name="blue"/>
+                   <field name="color" widget="color"/>
+            </list>
+        </field>
+    </record>
+  <record id="action_chromatic_sorting" model="ir.actions.act_window">
+        <field name="name">Chromatic Sorting</field>
+        <field name="res_model">chromatic.sorting</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_chromatic_sorting_tree"/>
+    </record>
+    <record id="action_color_list" model="ir.actions.act_window">
+        <field name="name">Color List</field>
+        <field name="res_model">chromatic.color</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_chromatic_color_tree"/>
+    </record>
+    <menuitem id="chromatic_sorting_menu" name="Chromatic Sorting" sequence="1"/>
+    <menuitem id="menu_chromatic_sorting" name="Chromatic Sorting" parent="chromatic_sorting_menu" action="action_chromatic_sorting"/>
+    <menuitem id="color_list" name="Color List" parent="chromatic_sorting_menu" action="action_color_list"/>
+</odoo>

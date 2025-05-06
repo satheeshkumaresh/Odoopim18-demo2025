@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_chromatic_sorting,chromatic.sorting.user,model_chromatic_sorting,,1,1,1,1
+access_chromatic_color,chromatic.color.user,model_chromatic_color,,1,1,1,1
