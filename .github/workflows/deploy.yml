@@ -1,0 +1,25 @@
+name: Deploy to Ubuntu
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /opt/odoo18/custom-addons/Odoopim18-demo2025/
+
+            git fetch origin
+            git pull origin main
+
+            echo "Deployment completed successfully"
