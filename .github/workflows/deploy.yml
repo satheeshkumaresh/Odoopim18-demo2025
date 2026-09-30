@@ -21,5 +21,6 @@ jobs:
 
             git fetch origin
             git pull origin main
+            chown -R odoo18:odoo18 /opt/odoo18/custom-addons/Odoopim18-demo2025/
 
             echo "Deployment completed successfully"
